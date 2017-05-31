@@ -1,13 +1,13 @@
 ﻿@model recognator_web.License
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Информация";
 }
 
-<h2>Details</h2>
+<h2>Информация</h2>
 
 <div>
-    <h4>License</h4>
+    <h4>Заявка</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -35,16 +35,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UserID)
+            @Html.DisplayNameFor(model => model.Username)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UserID)
+            @Html.DisplayFor(model => model.Username)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.LicenseId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.LicenseId }) |
+    @Html.ActionLink("Назад к списку", "Index")
 </p>

@@ -12,15 +12,19 @@ namespace recognator_web
         public int LicenseId { get; set; }
 
         [StringLength(9)]
+        [Display(Name = "Номер")]
         public string Number { get; set; }
 
         [StringLength(30)]
+        [Display(Name = "Марка")]
         public string Car { get; set; }
 
         [StringLength(10)]
+        [Display(Name = "Цвет")]
         public string Color { get; set; }
 
-        [StringLength(128)]
-        public string UserID { get; set; }
+        [StringLength(256)]
+        [Display(Name = "Владелец")]
+        public string Username { get; set; }
     }
 }

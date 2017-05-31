@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<recognator_web.License>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Список";
 }
 
-<h2>Index</h2>
+<h2>Список заявок</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -21,12 +18,15 @@
             @Html.DisplayNameFor(model => model.Color)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserID)
+            @Html.DisplayNameFor(model => model.Username)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
+    if (HttpContext.Current.User.Identity.Name == "admin@admin.com" || HttpContext.Current.User.Identity.Name == item.Username)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Number)
@@ -38,14 +38,15 @@
             @Html.DisplayFor(modelItem => item.Color)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.UserID)
+            @Html.DisplayFor(modelItem => item.Username)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LicenseId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LicenseId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LicenseId })
+        <td>            
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.LicenseId }) |
+            @Html.ActionLink("Подробнее", "Details", new { id=item.LicenseId }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.LicenseId })
         </td>
     </tr>
+    }
 }
 
 </table>

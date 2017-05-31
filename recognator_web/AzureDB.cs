@@ -5,10 +5,10 @@ namespace recognator_web
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class AzureSetModel : DbContext
+    public partial class AzureDB : DbContext
     {
-        public AzureSetModel()
-            : base("name=AzureSetModelcontext")
+        public AzureDB()
+            : base("name=AzureDBcontext")
         {
         }
 

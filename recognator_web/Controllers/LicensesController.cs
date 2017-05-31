@@ -12,7 +12,7 @@ namespace recognator_web.Controllers
 {
     public class LicensesController : Controller
     {
-        private AzureSetModel db = new AzureSetModel();
+        private AzureDB db = new AzureDB();
 
         // GET: Licenses
         public ActionResult Index()
@@ -36,6 +36,7 @@ namespace recognator_web.Controllers
         }
 
         // GET: Licenses/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -46,8 +47,9 @@ namespace recognator_web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LicenseId,Number,Car,Color,UserID")] License license)
+        public ActionResult Create([Bind(Include = "LicenseId,Number,Car,Color,Username")] License license)
         {
+            if (license.Username == null) license.Username = HttpContext.User.Identity.Name;
             if (ModelState.IsValid)
             {
                 db.License.Add(license);
@@ -78,7 +80,7 @@ namespace recognator_web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LicenseId,Number,Car,Color,UserID")] License license)
+        public ActionResult Edit([Bind(Include = "LicenseId,Number,Car,Color,Username")] License license)
         {
             if (ModelState.IsValid)
             {

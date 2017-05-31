@@ -21,7 +21,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                    {
                     <li>@Html.ActionLink("Список", "Index", "Licenses")</li>
+                    }
                     <li>@Html.ActionLink("Оставить заявку", "Create", "Licenses")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -32,7 +35,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - вкр sedgusev</p>
         </footer>
     </div>
 
